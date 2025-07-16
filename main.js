@@ -45,29 +45,41 @@ let humanScore = 0;
 function playRound(computerChoice, humanChoice) {
   
     if (computerChoice == 'rock' && humanChoice == 'scissor') {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
         computerScore++;
     } else if (computerChoice == 'paper' && humanChoice == 'rock') {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
         computerScore++;
     } else if (computerChoice == 'scissor' && humanChoice == 'paper') {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
         computerScore++;
     } else if (computerChoice == humanChoice) {
-        console.log("You tied! Try again.");
+        console.log(`You both selected ${computerChoice}. The round is a tie!`);
     } else {
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+        console.log(`You won! ${humanChoice} beats ${computerChoice}.`);
         humanScore++
     }
     return [computerScore, humanScore];
 }
 
-const totalRounds = 3;
+function determineWinner(computerScore, humanScore) {
+    if (computerScore == humanScore) {
+        console.log("Tie match!");
+    } else if (computerScore > humanScore) {
+        console.log("You lost the match!");
+    } else {
+        console.log("You won the match!");
+    }
+}
+
+const totalRounds = 5;
 
 for (let i = 0; i < totalRounds; i++) {
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
     [computerScore, humanScore] = playRound(computerChoice, humanChoice);
     console.log(`Computer: ${computerScore}`);
     console.log(`Human: ${humanScore}`);
 }
+
+determineWinner(computerScore, humanScore);
