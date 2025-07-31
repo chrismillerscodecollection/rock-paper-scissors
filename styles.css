@@ -1,0 +1,48 @@
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+.button-area {
+    display: flex;
+    padding: 2em;
+    text-align: center;
+}
+
+#rock {
+    background-image: url('assets/rock-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#paper {
+    background-image: url('assets/paper-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#scissors {
+    background-image: url('assets/scissors-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}

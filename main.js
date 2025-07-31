@@ -1,3 +1,18 @@
+// In our UI, the player should be able to play the game by clicking on buttons rather than typing their answer in a prompt.
+// For now, remove the logic that plays exactly five rounds.
+
+// Create three buttons, one for each selection. Add an event listener to the buttons that call your playRound 
+// function with the correct playerSelection every time a button is clicked. (you can keep the console.logs for this step)
+
+// Add a div for displaying results and change all of your console.logs into DOM methods.
+
+// Display the running score, and announce a winner of the game once one player reaches 5 points.
+
+// You will likely have to refactor (rework/rewrite) your original code to make it work for this. That’s OK! Reworking old code is an important part of a programmer’s life.
+
+
+
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -5,10 +20,10 @@ function getRandomInt(min, max) {
 }
 
 function getComputerChoice() {
-    let computerRandomNum = getRandomInt(0, 2);
+    let randomNum = getRandomInt(0, 2);
     let computerChoice;
 
-    switch (computerRandomNum) {
+    switch (randomNum) {
         case 0:
             computerChoice = 'rock';
             break;
@@ -22,25 +37,10 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getHumanChoice() {
-    let notValidChoice = true;
-    let humanChoice;
-
-    while (notValidChoice) {
-        humanChoice = prompt("Type your choice (rock, paper, or scissor)");
-        humanChoice = humanChoice.toLowerCase();
-
-        if (humanChoice == 'rock' || humanChoice == 'paper' || humanChoice == 'scissor') {
-            notValidChoice = false;
-        } else if (humanChoice == '') {
-            console.log("You didn't enter a value. Try again.");
-        }
-    }
-    return humanChoice
+function getHumanChoice(playerSelection) {
+    return playerSelection;
 }
 
-let computerScore = 0;
-let humanScore = 0;
 
 function playRound(computerChoice, humanChoice) {
   
@@ -72,14 +72,26 @@ function determineWinner(computerScore, humanScore) {
     }
 }
 
-const totalRounds = 5;
-
-for (let i = 0; i < totalRounds; i++) {
-    let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
-    [computerScore, humanScore] = playRound(computerChoice, humanChoice);
-    console.log(`Computer: ${computerScore}`);
-    console.log(`Human: ${humanScore}`);
+function setGameState(numberOfRounds) {
+    let computerScore = 0;
+    let humanScore = 0;
+    const rounds = numberOfRounds;
+    return {computerScore, humanScore, rounds};
 }
+
+function playGame() {
+    const gameState = setGameState(5)
+}
+
+// for (let i = 0; i < totalRounds; i++) {
+
+
+
+// let computerChoice = getComputerChoice();
+// let humanChoice = getHumanChoice();
+// [computerScore, humanScore] = playRound(computerChoice, humanChoice);
+// console.log(`Computer: ${computerScore}`);
+// console.log(`Human: ${humanScore}`);
+// }
 
 determineWinner(computerScore, humanScore);
